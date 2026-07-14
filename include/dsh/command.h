@@ -1,8 +1,9 @@
 #ifndef COMMAND_H
 #define COMMAND_H
 
-typedef enum
+typedef enum RedirectMode
 {
+    INVALID_MODE = -1,
     REDIRECT_TRUNCATE,
     REDIRECT_APPEND
 }RedirectMode;

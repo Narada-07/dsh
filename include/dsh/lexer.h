@@ -1,7 +1,8 @@
 #ifndef LEXER_H
 #define LEXER_H
+#include <dsh/command.h>
 
-typedef enum
+typedef enum LexerState
 {
     INVALID_STATE = -1,
     NORMAL,
@@ -9,12 +10,15 @@ typedef enum
     IN_DOUBLE_QUOTE,
     BACKSLASH,
     BACKSLASH_IN_DOUBLE_QUOTES,
-    REDIRECT_OUT,
-    REDIRECT_ERR,
-    APPEND_OUT,
-    APPEND_ERR
 }LexerState;
 
-void tokenize(char input[], char* argv[]);
+typedef enum
+{
+    EXPECT_NOTHING,
+    EXPECT_STDOUT_FILE,
+    EXPECT_STDERR_FILE
+} ExpectState;
+
+Command tokenize(char input[]);
 
 #endif
